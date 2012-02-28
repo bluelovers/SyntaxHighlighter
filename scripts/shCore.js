@@ -1627,7 +1627,12 @@ sh.Highlighter.prototype = {
 					+ this.getTitleHtml(this.getParam('title'))
 					+ '<tbody>'
 						+ '<tr>'
+							/*
 							+ (gutter ? '<td class="gutter">' + this.getLineNumbersHtml(code) + '</td>' : '')
+							*/
+							// bluelovers
+							+ (gutter ? '<td class="gutter" style="width: '+(splitLines(code).length.toString().length+1)+'em !important;">' + this.getLineNumbersHtml(code) + '</td>' : '')
+							// bluelovers
 							+ '<td class="code">'
 								+ '<div class="container">'
 									+ html
