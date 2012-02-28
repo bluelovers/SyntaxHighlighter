@@ -34,7 +34,7 @@
 	// CommonJS
 	SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined'? require('shCore').SyntaxHighlighter : null);
 
-SyntaxHighlighter.brushes.Yaml = function()
+	function Brush()
 {
 	// Contributed by Nicolas Perriault
 
