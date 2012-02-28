@@ -1128,7 +1128,15 @@ function quickCodeHandler(e)
 		;
 
 	for (var i = 0; i < lines.length; i++)
+	// bluelovers
+	{
+	// bluelovers
+
 		code.push(lines[i].innerText || lines[i].textContent);
+
+	// bluelovers
+	}
+	// bluelovers
 
 	// using \r instead of \r or \r\n makes this work equally well on IE, FF and Webkit
 	code = code.join('\r');
