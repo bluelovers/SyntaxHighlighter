@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SyntaxHighlighter Autoloader Demo</title>
+	<script type="text/javascript" src="../../scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script type="text/javascript" src="../../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../../scripts/shAutoloader.js"></script>
+	<link type="text/css" rel="stylesheet" href="../../styles/shCore.css"/>
+	<link type="text/css" rel="Stylesheet" href="../../styles/shThemeDefault.css" />
+</head>
+
+<body>
+
+<h2>SyntaxHighlighter Autoloader Demo</h2>
+
+<p>
+	The highlighters below have their brushes loaded dynamically as evident by looking at
+	the <code>&lt;head /></code> of this HTML file.
+</p>
+
+<script type="syntaxhighlighter" class="brush: yaml"><![CDATA[--- %YAML:1.0
+test: Multiple quoted string on one line
+brief: >
+    Multiple quoted string on one line
+yaml: |
+    stripped_title: { name: "foo bar", help: "bar foo" }
+php: |
+    array('stripped_title' => array('name' => 'foo bar', 'help' => 'bar foo'))
+---
+test: Empty sequence
+yaml: |
+    foo: [ ]
+php: |
+    array('foo' => array())
+---
+test: Empty value
+yaml: |
+    foo:
+php: |
+    array('foo' => null)
+---
+test: Inline string parsing
+brief: >
+    Inline string parsing
+yaml: |
+    test: ['complex: string', 'another [string]']
+php: |
+    array('test' => array('complex: string', 'another [string]'))
+---
+test: Boolean
+brief: >
+    Boolean
+yaml: |
+    - false
+    - true
+    - null
+    - ~
+    - 'false'
+    - 'true'
+    - 'null'
+    - '~'
+php: |
+    array(
+      false,
+      true,
+      null,
+      null,
+      'false',
+      'true',
+      'null',
+      '~',
+    )
+---
+test: Empty lines in folded blocks
+brief: >
+  Empty lines in folded blocks
+yaml: |
+  foo:
+    bar: |
+      foo
+
+
+
+      bar
+php: |
+  array('foo' => array('bar' => "foo\n\n\n  \nbar\n"))
+---
+test: IP addresses
+brief: >
+  IP addresses
+yaml: |
+  foo: 10.0.0.2
+php: |
+  array('foo' => '10.0.0.2')
+---
+test: A sequence with an embedded mapping
+brief: >
+  A sequence with an embedded mapping
+yaml: |
+  - foo
+  - bar: { bar: foo }
+php: |
+  array('foo', array('bar' => array('bar' => 'foo')))
+---
+test: A sequence with an unordered array
+brief: >
+  A sequence with an unordered array
+yaml: |
+  1: foo
+  0: bar
+php: |
+  array(1 => 'foo', 0 => 'bar')
+---
+test: Octal
+brief: as in spec example 2.19, octal value is converted
+yaml: |
+  foo: 0123
+php: |
+  array('foo' => 83)
+---
+test: Octal strings
+brief: Octal notation in a string must remain a string
+yaml: |
+  foo: "0123"
+php: |
+  array('foo' => '0123')
+---
+test: Octal strings
+brief: Octal notation in a string must remain a string
+yaml: |
+  foo: '0123'
+php: |
+  array('foo' => '0123')
+---
+test: Octal strings
+brief: Octal notation in a string must remain a string
+yaml: |
+  foo: |
+    0123
+php: |
+  array('foo' => "0123\n")
+---
+test: Document as a simple hash
+brief: Document as a simple hash
+yaml: |
+  { foo: bar }
+php: |
+  array('foo' => 'bar')
+---
+test: Document as a simple array
+brief: Document as a simple array
+yaml: |
+  [ foo, bar ]
+php: |
+  array('foo', 'bar')
+]]></script>
+
+<script type="text/javascript">
+SyntaxHighlighter.autoloader(
+	'applescript			../../scripts/shBrushAppleScript.js',
+	'actionscript3 as3		../../scripts/shBrushAS3.js',
+	'bash shell				../../scripts/shBrushBash.js',
+	'coldfusion cf			../../scripts/shBrushColdFusion.js',
+	'cpp c					../../scripts/shBrushCpp.js',
+	'c# c-sharp csharp		../../scripts/shBrushCSharp.js',
+	'css					../../scripts/shBrushCss.js',
+	'delphi pascal			../../scripts/shBrushDelphi.js',
+	'diff patch pas			../../scripts/shBrushDiff.js',
+	'erl erlang				../../scripts/shBrushErlang.js',
+	'groovy					../../scripts/shBrushGroovy.js',
+	'java					../../scripts/shBrushJava.js',
+	'jfx javafx				../../scripts/shBrushJavaFX.js',
+	'js jscript javascript	../../scripts/shBrushJScript.js',
+	'perl pl				../../scripts/shBrushPerl.js',
+	'php					../../scripts/shBrushPhp.js',
+	'text plain				../../scripts/shBrushPlain.js',
+	'py python				../../scripts/shBrushPython.js',
+	'ruby rails ror rb		../../scripts/shBrushRuby.js',
+	'scala					../../scripts/shBrushScala.js',
+	'sql					../../scripts/shBrushSql.js',
+	'vb vbnet				../../scripts/shBrushVb.js',
+	'xml xhtml xslt html	../../scripts/shBrushXml.js'
+
+	,
+	'yaml yml				../scripts/shbrushyaml.js'
+);
+
+//
+// Another way of setting up the autoloader
+//
+// SyntaxHighlighter.autoloader(
+// 	[ 'applescript',					'../scripts/shBrushAppleScript.js' ],
+// 	[ 'actionscript3', 'as3',			'../scripts/shBrushAS3.js' ],
+// 	[ 'bash', 'shell',					'../scripts/shBrushBash.js' ],
+// 	[ 'coldfusion', 'cf',				'../scripts/shBrushColdFusion.js' ],
+// 	[ 'cpp', 'c',						'../scripts/shBrushCpp.js' ],
+// 	[ 'c#', 'c-sharp', 'csharp',		'../scripts/shBrushCSharp.js' ],
+// 	[ 'css',							'../scripts/shBrushCss.js' ],
+// 	[ 'delphi', 'pascal',				'../scripts/shBrushDelphi.js' ],
+// 	[ 'diff', 'patch', 'pas',			'../scripts/shBrushDiff.js' ],
+// 	[ 'erl', 'erlang',					'../scripts/shBrushErlang.js' ],
+// 	[ 'groovy',							'../scripts/shBrushGroovy.js' ],
+// 	[ 'java',							'../scripts/shBrushJava.js' ],
+// 	[ 'jfx', 'javafx',					'../scripts/shBrushJavaFX.js' ],
+// 	[ 'js', 'jscript', 'javascript',	'../scripts/shBrushJScript.js' ],
+// 	[ 'perl', 'pl',						'../scripts/shBrushPerl.js' ],
+// 	[ 'php',							'../scripts/shBrushPhp.js' ],
+// 	[ 'text', 'plain',					'../scripts/shBrushPlain.js' ],
+// 	[ 'py', 'python',					'../scripts/shBrushPython.js' ],
+// 	[ 'ruby', 'rails', 'ror', 'rb',		'../scripts/shBrushRuby.js' ],
+// 	[ 'scala',							'../scripts/shBrushScala.js' ],
+// 	[ 'sql',							'../scripts/shBrushSql.js' ],
+// 	[ 'vb', 'vbnet',					'../scripts/shBrushVb.js' ],
+// 	[ 'xml', 'xhtml', 'xslt', 'html',	'../scripts/shBrushXml.js' ]
+// );
+
+SyntaxHighlighter.all();
+</script>
+
+</body>
+</html>
