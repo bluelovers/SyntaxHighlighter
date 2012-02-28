@@ -1130,11 +1130,27 @@ function quickCodeHandler(e)
 	for (var i = 0; i < lines.length; i++)
 	// bluelovers
 	{
+
+		/*
 	// bluelovers
 
 		code.push(lines[i].innerText || lines[i].textContent);
 
 	// bluelovers
+		*/
+
+		var _line = lines[i].innerText || lines[i].textContent;
+
+		_line = _line.replace(/\r|\n/, '');
+		if (trim(_line) == '') _line = '';
+
+		var _p = /^\t*[^\t\S]{4}/;
+		while (_p.test(_line)) {
+			_line = _line.replace(/^(\t*)[^\t\S]{4}/, '$1\t');
+		}
+
+		code.push(_line);
+
 	}
 	// bluelovers
 
