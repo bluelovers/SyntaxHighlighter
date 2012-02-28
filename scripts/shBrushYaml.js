@@ -27,6 +27,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/copyleft/lesser.html>.
+ *
+ * @-----------------
+ *
+ * 2012-02-28
+ * update yaml brush for SyntaxHighlighter v3
+ *
+ * @author bluelovers
+ *
  */
 
 ;(function()
