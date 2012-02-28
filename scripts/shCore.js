@@ -1487,7 +1487,15 @@ sh.Highlighter.prototype = {
 			html += this.getLineHtml(
 				i,
 				lineNumber,
+				/*
 				(spaces != null ? '<code class="' + brushName + ' spaces">' + spaces + '</code>' : '') + line
+				*/
+				// bluelovers
+				(spaces != null ? '<code class="' + brushName + ' spaces">' + spaces + '</code>' : '')
+					+ '<code class="linecontent" style="margin-left: ' + indent + 'px !important;'+(line == sh.config.space ? 'visibility:hidden;' : '')+'">'
+						+ line
+					+ '</code>'
+				// bluelovers
 			);
 		}
 
