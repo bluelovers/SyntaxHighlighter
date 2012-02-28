@@ -1155,7 +1155,12 @@ function quickCodeHandler(e)
 	// bluelovers
 
 	// using \r instead of \r or \r\n makes this work equally well on IE, FF and Webkit
+	/*
 	code = code.join('\r');
+	*/
+	// bluelovers
+	code = code.join('\n');
+	// bluelovers
 
 	// inject <textarea/> tag
 	textarea.appendChild(document.createTextNode(code));
