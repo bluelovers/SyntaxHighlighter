@@ -1455,9 +1455,28 @@ sh.Highlighter.prototype = {
 
 			if (indent != null)
 			{
+				// bluelovers
+				if (sh.vars.spaceWidth === null) {
+//					sh.vars.spaceWidth = 7;
+					sh.vars.spaceWidth = 2;
+				}
+				// bluelovers
+
 				spaces = indent[0].toString();
 				line = line.substr(spaces.length);
+
+				// bluelovers
+				spaces = spaces.replace(sh.config.space, ' ');
+				indent = sh.vars.spaceWidth * spaces.length;
+				// bluelovers
+
 				spaces = spaces.replace(' ', sh.config.space);
+
+			// bluelovers
+			} else {
+				indent = 0;
+			// bluelovers
+
 			}
 
 			line = trim(line);
