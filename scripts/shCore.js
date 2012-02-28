@@ -93,6 +93,11 @@ var sh = {
 	/** Internal 'global' variables. */
 	vars : {
 		discoveredBrushes : null,
+
+		/* bluelovers */
+		spaceWidth : null,
+		/* bluelovers */
+
 		highlighters : {}
 	},
 
