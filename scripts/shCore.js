@@ -348,6 +348,11 @@ var sh = {
 				element.id = target.id;
 
 			target.parentNode.replaceChild(element, target);
+
+			// bluelvoers
+			// 用來修正斷行後的高度
+			highlighter.execAppendScript();
+			// bluelvoers
 		}
 	},
 
