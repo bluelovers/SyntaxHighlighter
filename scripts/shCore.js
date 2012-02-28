@@ -1055,7 +1055,12 @@ function processUrls(code)
 			suffix = match[2];
 		}
 
+		/*
 		return '<a href="' + m + '">' + m + '</a>' + suffix;
+		*/
+		// bluelovers
+		return '<a href="' + m + '" target="_blank">' + m + '</a>' + suffix;
+		// bluelovers
 	});
 };
 
