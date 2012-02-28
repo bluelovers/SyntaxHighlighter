@@ -55,8 +55,10 @@ SyntaxHighlighter.brushes.Yaml = function()
         ];
 };
 
-SyntaxHighlighter.brushes.Yaml.prototype  = new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Yaml.aliases    = ['yaml', 'yml'];
+	Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['yaml', 'yml'];
+
+	SyntaxHighlighter.brushes.Yaml = Brush;
 
 // CommonJS
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
